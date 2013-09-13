@@ -1,37 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Alonehe.github.com by Alonehe</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Alonehe.github.com : test Blog" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Alonehe.github.com</title>
   </head>
+
   <body>
 
-      <header>
-        <h1>Alonehe.github.com</h1>
-        <p>test Blog</p>
-      </header>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Alonehe">View on GitHub</a>
 
-      <div id="banner">
-        <span id="logo"></span>
+          <h1 id="project_title">Alonehe.github.com</h1>
+          <h2 id="project_tagline">test Blog</h2>
 
-        <a href="https://github.com/Alonehe" class="button fork"><strong>View On GitHub</strong></a>
-      </div><!-- end banner -->
+        </header>
+    </div>
 
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h3>
 <a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
 
@@ -62,13 +57,169 @@ $ git checkout gh-pages
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.
+&lt;!DOCTYPE html&gt;
+
+</p>
+    <pre><code>   &lt;title&gt;StuPersonalInfo&lt;/title&gt;
+&lt;script src="../../js/jquery-1.9.1.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="../../js/md5.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="js/Loading.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="GB2312"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+    var StuNme, StuClassName, Sex, DepartmentName, MajorName, ICNumber;         //define
+    var StuInfo;
+    function onDeviceReady() {
+        alert("Device is ready");
+    }
+
+    function Init() {
+        document.addEventListener('deviceready', onDeviceReady, false);
+    }
+    //TEST CODING
+    //Output function
+    function printInfo(StuNme, StuClassName, Sex, DepartmentName, MajorName, ICNumber) {
+
+      //  alert(StuNme);
+        document.getElementById("SName").innerHTML = StuNme;
+      //  alert(StuClassName);
+        document.getElementById("StuClassName").innerHTML = StuClassName;
+      //  alert(Sex);
+        document.getElementById("Sex").innerHTML = Sex;
+     //   alert(DepartmentName);
+        document.getElementById("DepartmentName").innerHTML = DepartmentName;
+     //   alert(MajorName);
+        document.getElementById("MajorName").innerHTML = MajorName;
+        document.getElementById("ICNumber").innerHTML = ICNumber;
+
+    }
+
+    //get data
+    function loadStuInfo() {
+
+      //  var md5_stuPasswd = hex_md5(stuPasswd);
+        var curStuNum = "123456";
+        var md5_stuPasswd = "e10adc3949ba59abbe56e057f20f883e";
+        queryString = "UserName=" + curStuNum + "&amp;PassWord=" + md5_stuPasswd;   
+
+
+        var url = "http://222.18.158.220:9001/Authentication.svc/GetStudentInfo?" + queryString + "&amp;callback=?";
+      // alert("取数据！");
+        if (navigator.onLine) {
+            $.getJSON(url, function (data) {
+                var InfoJSON = $.parseJSON(data);
+                if (InfoJSON["Success"] == "true") {
+                    printInfo(InfoJSON["StuInfo"][0]["StuNme"], InfoJSON["StuInfo"][0]["StuClassName"], InfoJSON["StuInfo"][0]["Sex"], InfoJSON["StuInfo"][0]["DepartmentName"], InfoJSON["StuInfo"][0]["MajorName"], InfoJSON["StuInfo"][0]["ICNumber"]);
+                   //     alert("Success");
+                }
+                else {
+                    alert("好像没有你的信息 :(");
+                }
+            });
+        }
+        else {
+            alert("网络好像不给力啊！");
+        }
+    }
+
+
+
+    //OVER
+    //
+    loadStuInfo();
+&lt;/script&gt;
+</code></pre>
+
+<p>
+</p>
+    &lt;!-- Header --&gt;
+    <div>
+        <div>
+            <div>
+                <div>
+                     
+                        <img src="../../img/cmdImg_returnBtn.png">
+                </div>
+                <div>
+               <p>个人资料</p>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    &lt;!-- Content --&gt;
+     <div>
+        <div>
+        <div>
+            <table><tr>
+<td rowspan="2"></td>
+                    <td>姓名</td>
+                    <td></td>
+
+<pre><code>            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td style="height:30%;font-size:40px"&gt;性别&lt;/td&gt;
+                &lt;td id="Sex" style="height:30%;font-size:40px"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;div class="message_mid"&gt;
+        &lt;table&gt;
+            &lt;tr&gt;
+                &lt;td class="td_foot"&gt;ICNum&lt;/td&gt;
+                &lt;td class="td_info" id="ICNumber" style="font-size:28px"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+
+    &lt;/div&gt;
+    &lt;div class="message_foot"&gt;
+        &lt;table&gt;
+            &lt;tr &gt;
+                &lt;td class="td_foot"&gt;班级：&lt;/td&gt;
+                &lt;td class="td_info" id="StuClassName"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td_foot"&gt;学院：&lt;/td&gt;
+                &lt;td class="td_info" id ="DepartmentName"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td class="td_foot"&gt;专业：&lt;/td&gt;
+                &lt;td class="td_info" id="MajorName"&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+
+        &lt;/table&gt;
+    &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+&lt;!-- Footer --&gt;
+&lt;div class="footer_wrapper"&gt;
+    &lt;div class="footer_wrapper_fixed"&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>
+</p>
+</tr></table>
+</div>
+</div>
+</div>
       </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
     
+
   </body>
 </html>
